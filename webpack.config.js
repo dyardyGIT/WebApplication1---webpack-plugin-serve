@@ -16,17 +16,17 @@ var jsEntries = {};
 // We search for index.js files inside basePath folder and make those as entries
 var appBasePath = './Scripts/app/';
 var fs = require('fs');
-//fs.readdirSync(appBasePath).forEach(function (name) {
-//    var indexFile = appBasePath + name + '/index.js'
-//    if (fs.existsSync(indexFile)) {
-//        //jsEntries[name] = indexFile
-//        jsEntries[name] = [indexFile, 'webpack-plugin-serve/client']
-//    }
-//})
-jsEntries = {
-    changeorder: ['./scripts/app/changeorder/index.js', 'webpack-plugin-serve/client'],
-    changeorderdetails: ['./scripts/app/changeorderdetails/index.js', 'webpack-plugin-serve/client']
-}
+fs.readdirSync(appBasePath).forEach(function (name) {
+    var indexFile = appBasePath + name + '/index.js'
+    if (fs.existsSync(indexFile)) {
+        //jsEntries[name] = indexFile
+        jsEntries[name] = [indexFile, 'webpack-plugin-serve/client']
+    }
+})
+//jsEntries = {
+//    changeorder: ['./scripts/app/changeorder/index.js', 'webpack-plugin-serve/client'],
+//    changeorderdetails: ['./scripts/app/changeorderdetails/index.js', 'webpack-plugin-serve/client']
+//}
 
 
 console.log('--jsEntries--');
@@ -120,7 +120,7 @@ module.exports = {
   output: {
     path: outputPath,
     //publicPath: '/',
-    publicPath: './Scripts/bundle/',
+    publicPath: '/WebApplication1/Scripts/bundle/',
     //filename: 'bundle.js'
     filename: '[name].js'
   },
